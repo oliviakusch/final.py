@@ -48,7 +48,7 @@ new_coordinators = '''SELECT country, shortName, name, projectAcronym, activityT
            WHERE role = 'coordinator'
            GROUP BY country
            ORDER BY shortName ASC'''
-df_coordinators = pd.read_sql_query("""SELECT * FROM participants WHERE role = 'coordinator' """.format(selectedcountry), conn)
+df_coordinators = pd.read_sql_query("""SELECT * FROM participants WHERE role = 'coordinator'AND country = '{}' """.format(selectedcountry), conn)
 
 
 conn.close()
