@@ -15,11 +15,11 @@ df_countries = pd.read_sql(query, conn)
 conn.close()
 
 print(df_countries)
-country_acronyms = dict(zip(df_countries["Acronym"], df_countries["Country"]))
+country_names = dict(zip(df_countries["Country"], df_countries["Acronym))
 
-print(country_acronyms)
+print(country_names)
 
-selectedcountry = st.selectbox('Select a Country:',list(country_acronyms.keys()))
+selectedcountry = st.selectbox('Select a Country:',list(country_names.keys()))
  
 
 # 2.8 create a new dataframe of participants
