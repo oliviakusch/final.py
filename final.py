@@ -31,7 +31,7 @@ new_participants = '''SELECT shortName, name, activityType, organizationURL, SUM
            ORDER BY SUM(ecContribution) DESC'''
 
 # df_participants = pd.read_sql_query(new_participants, conn)
-df_participants = pd.read_sql_query("""SELECT shortName, name, activityType, organizationURL, SUM(ecContribution)  FROM participants WHERE country = '{}' GROUP BY ecContribution ORDER BY SUM(ecContribution) DESC""".format(selectedacronym), conn)
+df_participants = pd.read_sql_query("""SELECT shortName, name, activityType, organizationURL, SUM(ecContribution)  FROM participants WHERE country = '{}' GROUP BY ecContribution ORDER BY SUM(ecContribution)""".format(selectedacronym), conn)
 
 
 conn.close()
@@ -48,8 +48,10 @@ new_coordinators = '''SELECT shortName, name, projectAcronym, activityType
            WHERE role = 'coordinator' AND 'country'='{}' 
            GROUP BY country
            ORDER BY shortName ASC'''
-df_coordinators = pd.read_sql_query(new_coordinators, conn)
-# df_coordinators = pd.read_sql_query("""SELECT * FROM participants WHERE country = '{}' """.format(selectedacronym), conn)
+
+# df_coordinators = pd.read_sql_query(new_coordinators, conn)
+
+df_coordinators = pd.read_sql_query("""SELECT * FROM participants WHERE country = '{}' GROUP BY country ORDER BY shortName ASC""".format(selectedacronym), conn)
 
 
 conn.close()
