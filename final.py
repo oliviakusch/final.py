@@ -15,7 +15,7 @@ df_countries = pd.read_sql(query, conn)
 conn.close()
 
 print(df_countries)
-country_names = dict(zip(df_countries["Country"], df_countries["Acronym"]))
+country_names = dict(zip(df_countries["Acronym"], df_countries["Country"]))
 
 print(country_names)
 
