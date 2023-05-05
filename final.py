@@ -24,14 +24,14 @@ selectedcountry = st.selectbox('Select a Country:',list(country_names.keys()))
 
 # 2.8 create a new dataframe of participants
 conn = sqlite3.connect('ecsel_database.db')
-new_participants = '''SELECT country, shortName, name, activityType, organizationURL, role, SUM(ecContribution) 
+new_participants = '''SELECT Acronym, shortName, name, activityType, organizationURL, role, SUM(ecContribution) 
            FROM participants
            WHERE role = 'participant'
-           GROUP BY country
+           GROUP BY Acronym
            ORDER BY SUM(ecContribution) DESC'''
 
 df_participants = pd.read_sql_query(new_participants, conn)
-df_participants = pd.read_sql_query("""SELECT * FROM participants WHERE country = '{}' """.format(selectedcountry), conn)
+df_participants = pd.read_sql_query("""SELECT * FROM participants WHERE Acronym = '{}' """.format(selectedcountry), conn)
 
 
 conn.close()
@@ -43,12 +43,12 @@ st.dataframe(df_participants)
 #2.10  Generating a project coordinators dataframe
 
 conn = sqlite3.connect('ecsel_database.db')
-new_coordinators = '''SELECT country, shortName, name, projectAcronym, activityType, role 
+new_coordinators = '''SELECT Acronym, shortName, name, projectAcronym, activityType, role 
            FROM participants
            WHERE role = 'coordinator'
-           GROUP BY country
+           GROUP BY Acronym
            ORDER BY shortName ASC'''
-df_coordinators = pd.read_sql_query("""SELECT * FROM participants WHERE role = 'coordinator'AND country = '{}' """.format(selectedcountry), conn)
+df_coordinators = pd.read_sql_query("""SELECT * FROM participants WHERE role = 'coordinator'AND Acronym = '{}' """.format(selectedcountry), conn)
 
 
 conn.close()
