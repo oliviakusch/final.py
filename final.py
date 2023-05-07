@@ -93,7 +93,6 @@ st.download_button(
    key='download-csv'
 )
 
-
 df_coordinators = pd.read_csv("project coordinators.csv")
 
 def convert_df_coordinators(df):
@@ -108,3 +107,6 @@ st.download_button(
    mime="text/csv;charset=utf-8",
    key='download1-csv'
 )
+
+#Added Functionalities
+
