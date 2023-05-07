@@ -106,5 +106,5 @@ st.download_button(
    data= coordinators_csv,
    file_name="project coordinators.csv",
    mime="text/csv;charset=utf-8",
-   key='download-csv'
+   key='download1-csv'
 )
