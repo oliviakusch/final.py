@@ -117,5 +117,5 @@ df_chart = df_chart.rename(columns=columnnamechanges)
 print(df_chart)
 
 st.dataframe(df_chart) 
-st.line_chart(data= df_chart)
+st.bar_chart(data= df_chart, x = 'activityType', y = 'SUM(ecContribution)')
 
