@@ -65,7 +65,6 @@ new_coordinators = '''SELECT shortName, name, projectAcronym, activityType
 
 df_coordinators = pd.read_sql_query("""SELECT * FROM participants WHERE country = '{}'AND role = 'coordinator' ORDER BY shortName ASC""".format(selectedacronym), conn)
 
-
 conn.close()
 
 df_coordinators = df_coordinators.rename(columns=columnnamechanges)
@@ -75,12 +74,6 @@ print(df_coordinators)
 #2.11 Visualization of the project coordinators dataframe
 st.header('Coordinators in ' + selectedcountry)
 st.dataframe(df_coordinators) 
-
-df_participants = pd.read_csv("participants.csv")
-
-def convert_df_participants(df):
-   return df.to_csv(index=False).encode('utf-8')
-
 
 df_participants = pd.read_csv("participants.csv")
 
