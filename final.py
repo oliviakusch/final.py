@@ -33,7 +33,7 @@ country_names = dict(zip(df_countries["Country"], df_countries["Acronym"]))
 print(country_names)
 
 
-selectedcountry = st.selectbox('Select a Country :earth_africa::',list(country_names.keys())) 
+selectedcountry = st.selectbox('Select a Country :earth_africa: :',list(country_names.keys())) 
 selectedacronym = country_names[selectedcountry]
 
 
