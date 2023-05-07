@@ -116,4 +116,5 @@ conn.close()
 df_chart = df_chart.rename(columns=columnnamechanges)
 print(df_chart)
 st.dataframe(df_chart) 
+st.line_chart(df_chart)
 
