@@ -7,7 +7,7 @@ import sqlite3
 import pandas as pd
 import streamlit as st
 
-st.title(":green[_Partner Search_]")
+st.title(":green[Partner Search]")
 
 # create a connection to the database
 conn = sqlite3.connect('ecsel_database.db')
@@ -49,7 +49,7 @@ print(df_participants)
 df_participants = df_participants.rename(columns=columnnamechanges)
 
 #2.9 Visualization of the new dataframe
-st.header('Participants in ' + selectedcountry)
+st.header(_'Participants in ' + selectedcountry_)
 st.dataframe(df_participants) 
 
 #2.10  Generating a project coordinators dataframe
