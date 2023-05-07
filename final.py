@@ -41,7 +41,7 @@ new_participants = '''SELECT shortName, name, activityType, organizationURL, SUM
            ORDER BY SUM(ecContribution) DESC'''
 
 # df_participants = pd.read_sql_query(new_participants, conn)
-df_participants = pd.read_sql_query("""SELECT shortName, name, activityType, organizationURL, SUM(ecContribution)  FROM participants WHERE country = '{}' GROUP BY ecContribution ORDER BY SUM(ecContribution)""".format(selectedacronym), conn)
+df_participants = pd.read_sql_query("""SELECT shortName, name, activityType, organizationURL, SUM(ecContribution)  FROM participants WHERE country = '{}' GROUP BY ecContribution ORDER BY SUM(ecContribution) DESC""".format(selectedacronym), conn)
 
 conn.close()
 print(df_participants)
