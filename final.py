@@ -49,7 +49,7 @@ print(df_participants)
 df_participants = df_participants.rename(columns=columnnamechanges)
 
 #2.9 Visualization of the new dataframe
-st.header("Participants in ['selectedcountry']")
+st.header(selectedcountry)
 st.dataframe(df_participants) 
 
 #2.10  Generating a project coordinators dataframe
