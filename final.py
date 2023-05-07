@@ -74,4 +74,24 @@ print(df_coordinators)
 
 #2.11 Visualization of the project coordinators dataframe
 st.dataframe(df_coordinators) 
-                   
+
+import streamlit as st
+import pandas as pd
+
+df_participants = pd.read_csv("participants.csv")
+
+@st.experimental_memo
+def convert_df_participants(df):
+   return df.to_csv(index=False).encode('utf-8')
+
+
+participants_csv = convert_df_participants(df_participants)
+
+st.download_button(
+   "Download Participants Database (.csv)",
+   participants_csv,
+   "participants.csv",
+   "text/csv;charset=utf-8",
+   key='download-csv'
+)
+
