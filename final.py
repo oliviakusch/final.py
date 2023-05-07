@@ -117,5 +117,5 @@ df_chart = df_chart.rename(columns=columnnamechanges)
 print(df_chart)
 
 st.dataframe(df_chart) 
-st.line_chart(data= df_chart, x="country", y="SUM(ecContribution)", width=0, height=0, use_container_width=True)
+st.line_chart(data= df_chart)
 
