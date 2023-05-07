@@ -75,6 +75,13 @@ print(df_coordinators)
 #2.11 Visualization of the project coordinators dataframe
 st.header('Coordinators in ' + selectedcountry)
 st.dataframe(df_coordinators) 
+
+df_participants = pd.read_csv("participants.csv")
+
+def convert_df_participants(df):
+   return df.to_csv(index=False).encode('utf-8')
+
+
 df_participants = pd.read_csv("participants.csv")
 
 def convert_df_participants(df):
