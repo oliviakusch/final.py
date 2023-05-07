@@ -38,7 +38,6 @@ selectedacronym = country_names[selectedcountry]
 
 st.caption(f"_You have selected:_ <span style='color:red'>{selectedcountry}</span>")
 
-
 # 2.8 create a new dataframe of participants
 conn = sqlite3.connect('ecsel_database.db')
 new_participants = '''SELECT shortName, name, activityType, organizationURL, SUM(ecContribution) 
