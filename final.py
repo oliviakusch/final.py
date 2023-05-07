@@ -36,7 +36,7 @@ print(country_names)
 selectedcountry = st.selectbox('Select a Country :earth_africa: :',list(country_names.keys())) 
 selectedacronym = country_names[selectedcountry]
 
-st.caption("_You have selected:_ " + selectedcountry)
+st.caption("_You have selected:_ " + :red[_selectedcountry_)
 
 # 2.8 create a new dataframe of participants
 conn = sqlite3.connect('ecsel_database.db')
