@@ -7,6 +7,9 @@ import sqlite3
 import pandas as pd
 import streamlit as st
 
+from PIL import Image
+image = Image.open('image2.jpg') # Load the image from disk
+st.image(image) # Display the image
 st.title(":green[_Partner Search_]")
 
 # create a connection to the database
