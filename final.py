@@ -47,6 +47,7 @@ df_participants = pd.read_sql_query("""SELECT shortName, name, activityType, org
 conn.close()
 print(df_participants)
 df_participants = df_participants.rename(columns=columnnamechanges)
+df_participants.to_csv('participants.csv')
 
 #2.9 Visualization of the new dataframe
 st.header('Participants in ' + selectedcountry)
@@ -70,6 +71,7 @@ conn.close()
 df_coordinators = df_coordinators.rename(columns=columnnamechanges)
 
 print(df_coordinators)
+df_coordinators.to_csv('project coordinators.csv')
 
 #2.11 Visualization of the project coordinators dataframe
 st.header('Coordinators in ' + selectedcountry)
