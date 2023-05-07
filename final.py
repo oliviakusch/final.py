@@ -92,18 +92,3 @@ st.download_button(
    mime="text/csv;charset=utf-8",
    key='download-csv'
 )
-
-df_coordinators = pd.read_csv("project coordinators.csv")
-
-def convert_df_coordinators(df):
-   return df.to_csv(index=False).encode('utf-8')
-
-coordinators_csv = convert_df_coordinators(df_coordinators)
-
-st.download_button(
-   label="Download Project Coordinators Database (.csv)",
-   data=project coordinators_csv,
-   file_name="project coordinators.csv",
-   mime="text/csv;charset=utf-8",
-   key='download-csv'
-)
