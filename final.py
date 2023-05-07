@@ -118,5 +118,5 @@ print(df_chart)
 
 st.dataframe(df_chart) 
 
-st.bar_chart(df_chart['activityType'])
+st.bar_chart(data=df_chart, x='activityType', y='SUM(ecContribution)')
 
