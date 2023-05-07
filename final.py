@@ -76,7 +76,6 @@ print(df_coordinators)
 st.dataframe(df_coordinators) 
 df_participants = pd.read_csv("participants.csv")
 
-@st.experimental_memo
 def convert_df_participants(df):
    return df.to_csv(index=False).encode('utf-8')
 
