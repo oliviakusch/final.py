@@ -7,7 +7,7 @@ import sqlite3
 import pandas as pd
 import streamlit as st
 
-st.title(":blue[_Partner Search_]")
+st.title(":green[_Partner Search_]")
 
 # create a connection to the database
 conn = sqlite3.connect('ecsel_database.db')
