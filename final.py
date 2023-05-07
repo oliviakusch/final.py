@@ -110,11 +110,10 @@ st.download_button(
 
 #Added Functionalities
 conn = sqlite3.connect('ecsel_database.db')
-df_chart = pd.read_sql_query("""SELECT country, SUM(ecContribution) FROM participants WHERE country = '{}' GROUP BY activityType """.format(selectedacronym), conn)
+df_chart = pd.read_sql_query("""SELECT country, activityType, SUM(ecContribution) FROM participants WHERE country = '{}' """.format(selectedacronym), conn)
 
 conn.close()
 df_chart = df_chart.rename(columns=columnnamechanges)
 print(df_chart)
 st.dataframe(df_chart) 
-st.line_chart(df_chart)
-
+st.line_chart(data=dfchart, use_container_width=True, width=0, height=0, x_axis_label='activityType', y_axis_label='Contribution Sum')
