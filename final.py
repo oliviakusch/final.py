@@ -112,7 +112,7 @@ print(df_chart)
 st.dataframe(df_chart) 
 
 # Display the bar chart with contribution sum numbers
-chart = st.bar_chart(data=df_chart, x='activityType', y='Contribution Sum')
+chart = st.bar_chart(data=df_chart, x='Activity Type', y='Contribution Sum')
 
 # Add contribution sum numbers on the bar chart
 for container in chart.container:
