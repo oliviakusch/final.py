@@ -113,30 +113,14 @@ st.download_button(
 )
 
 #Added Functionalities
-# conn = sqlite3.connect('ecsel_database.db')
-# df_chart = pd.read_sql_query("""SELECT activityType, country, SUM(ecContribution) FROM participants WHERE country = '{}' GROUP BY activityType""".format(selectedacronym), conn)
-
-# conn.close()
-# df_chart = df_chart.rename(columns=columnnamechanges)
-# print(df_chart)
-
-# st.dataframe(df_chart) 
-
-# st.bar_chart(data=df_chart, x='activityType', y='SUM(ecContribution)')
-
-df_chart = pd.read_sql_query(
-    """SELECT activityType, country, SUM(ecContribution) 
-    FROM participants 
-    WHERE country = '{}' 
-    GROUP BY activityType""".format(selectedacronym), 
-    conn
-)
+conn = sqlite3.connect('ecsel_database.db')
+df_chart = pd.read_sql_query("""SELECT activityType, country, SUM(ecContribution) FROM participants WHERE country = '{}' GROUP BY activityType""".format(selectedacronym), conn)
 
 conn.close()
 df_chart = df_chart.rename(columns=columnnamechanges)
+print(df_chart)
 
-# Display the data table
-st.dataframe(df_chart)
+st.dataframe(df_chart) 
 
-# Display the bar chart
-st.bar_chart(data=df_chart, x='activityType', y='Contribution Sum')
+st.bar_chart(data=df_chart, x='Activity Type', y='Contribution Sum')
+
