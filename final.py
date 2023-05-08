@@ -144,7 +144,7 @@ projects_dict = {
     'BEYOND5': 'radio, technology, soi, pilot', 
     'YESvGaN': 'yesvgan, low, cost, power, transistor, technology'}
 
-  
+ 
  def get_projects_by_keyword(keyword, projects_dict):
     projects = []
     for project, keywords in projects_dict.items():
