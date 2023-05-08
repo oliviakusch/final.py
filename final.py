@@ -230,6 +230,16 @@ st.header('Evolution of Contribution Sum by Activity Type')
 st.bar_chart(data=df_chart, x='Activity Type', y='Contribution Sum')
 st.dataframe(df_chart) 
 
+
+
+
+
+
+
+
+
+
+
 # Dictionary of projects with keywords
 projects_dict = { 
     'MATQu': 'computing, technology, qubit', 
@@ -299,6 +309,15 @@ def main():
 
 if __name__ == "__main__":
     main()
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   
