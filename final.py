@@ -94,7 +94,18 @@ st.header('Evolution of Contribution Sum by Activity Type')
 st.bar_chart(data=df_chart, x='Activity Type', y='Contribution Sum')
 st.dataframe(df_chart) 
              
-  
+import streamlit as st
+
+def get_projects_by_keyword(keyword, projects_dict):
+    projects = []
+    for project, keywords in projects_dict.items():
+        if keyword in keywords:
+            projects.append(project)
+    return projects
+
+# Dictionary of projects with keywords
+projects_dict = { 
+
 def acronym_function(x):
     d = {'MATQu': 'computing, technology, qubit', 'HELoS': 'initiative, medical, device, technology', 
      'AFarCloud': 'farming, labour, health, order, project', 'ASTONISH': 'application, imaging, technology', 
@@ -143,7 +154,7 @@ def acronym_function(x):
      'R2POWER300': 'manufacturing, line, mm, new, process, technology, smart, power', 'REFERENCE': 'european, rf, technology', 
      'TARANTO': 'project, high, system', 'TEMPO': 'neuromorphic, dnn, technology', 'OCEAN12': 'fdsoi, technology, low'}
     return d[x]
-
+}
 
 # Streamlit app code
 def main():
@@ -153,22 +164,19 @@ def main():
 
     if st.button("Search"):
         if keyword:
-            if keyword in d:
-                projects = d[keyword]
-                st.success(f"Projects for keyword '{keyword}':")
-                for project in projects.split(', '):
+            projects = get_projects_by_keyword(keyword, projects_dict)
+            if projects:
+                st.success(f"Projects related to keyword '{keyword}':")
+                for project in projects:
                     st.write(f"- {project}")
             else:
-                st.warning("Keyword not found.")
+                st.warning("No projects found for the keyword.")
         else:
             st.warning("Please enter a keyword.")
 
 if __name__ == "__main__":
     main()
-  
-  
-  
-  
+
   
   
   
