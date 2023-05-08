@@ -283,15 +283,6 @@ projects_dict = {
     'BEYOND5': 'radio, technology, soi, pilot', 
     'YESvGaN': 'yesvgan, low, cost, power, transistor, technology'}
 
-
-def get_projects_by_keyword(keyword, projects_dict):
-    projects = []
-    for project, keywords in projects_dict.items():
-        if keyword in keywords:
-            projects.append(project)
-    return projects 
-
-
 # Streamlit app code
 def main():
     st.title("Project Keyword Search")
@@ -312,6 +303,14 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+def get_projects_by_keyword(keyword, projects_dict):
+    projects = []
+    for project, keywords in projects_dict.items():
+        if keyword in keywords:
+            projects.append(project)
+    return projects 
 
   
   
