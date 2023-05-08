@@ -289,20 +289,18 @@ def main():
                 st.warning("No projects found for the keyword.")
         else:
             st.warning("Please enter a keyword.")
-            
-            
+           
+  
+if __name__ == "__main__":
+    main()
+    
+    
 def get_projects_by_keyword(keyword, projects_dict):
     projects = []
     for project, keywords in projects_dict.items():
         if keyword in keywords:
             projects.append(project)
     return projects 
-  
-if __name__ == "__main__":
-    main()
-
-  
-  
 
 
   
