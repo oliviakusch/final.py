@@ -240,16 +240,13 @@ st.dataframe(df_chart)
 
 
 
-def get_projects_by_keyword(keyword, df_projects):
+def get_projects_by_keyword(keyword, projects_dict):
     projects = []
-    for index, row in df_projects.iterrows():
-        if keyword in row['keywords']:
-            project = row['Project Acronym']
-            country = row['Country']
-            projects.append((project, country))
-    return projects
+    for project, keywords in projects_dict.items():
+        if keyword in keywords:
+            projects.append(project)
+    return projects 
 
-  
 # Dictionary of projects with keywords
 projects_dict = { 
     'MATQu': 'computing, technology, qubit', 
@@ -313,6 +310,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
   
   
   
