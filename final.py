@@ -94,6 +94,12 @@ st.header('Evolution of Contribution Sum by Activity Type')
 st.bar_chart(data=df_chart, x='Activity Type', y='Contribution Sum')
 st.dataframe(df_chart) 
 
+def get_projects_by_keyword(keyword, projects_dict):
+    projects = []
+    for project, keywords in projects_dict.items():
+        if keyword in keywords:
+            projects.append(project)
+    return projects 
 
 # Dictionary of projects with keywords
 projects_dict = { 
