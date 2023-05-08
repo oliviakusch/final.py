@@ -93,7 +93,101 @@ print(df_chart)
 st.header('Evolution of Contribution Sum by Activity Type')
 st.bar_chart(data=df_chart, x='Activity Type', y='Contribution Sum')
 st.dataframe(df_chart) 
-             
+            
+  
+  
+  
+  
+  
+  
+ 
+
+# Dictionary of projects with keywords
+projects_dict = { 
+    'MATQu': 'computing, technology, qubit', 
+    'HELoS': 'initiative, medical, device, technology', 
+    'AFarCloud': 'farming, labour, health, order, project', 
+    'ASTONISH': 'application, imaging, technology', 
+    'EXIST': 'image, sensor, imaging, pixel, high, filter, spectral', 
+    'CSA-Industry4.E': 'liase, stakeholder, project', 
+    'DENSE': 'system, weather, environment', 
+    'Productive4.0': 'project, industry, solution', 
+    'ENABLE-S3': 'system, test, validation', 
+    'MANTIS': 'mantis, maintenance, system', 
+    'POSITION-II': 'position, technology, platform', 
+    'Moore4Medical': 'medical, application, technology, platform', 
+    'TRANSACT': 'safety, critical, system, service, transact, cloud', 
+    'InSecTT': 'thing, intelligent, secure, system', 
+    'InForMed': 'pilot, line, fabrication', 
+    'SCOTT': 'wireless, solution, end, domain, user', 
+    'MegaMaRt2': 'productivity, industrial, runtime', 
+    'DELPHI4LED': 'industry, product, market, multi, model, development, tool, compact', 
+    '3Ccar': 'project, complexity, semiconductor, innovation', 
+    'PRYSTINE': 'system, fail, operational, fusion', 
+    'RobustSENSE': 'system, condition, robustsense', 
+    'EuroPAT-MASIP': '', 
+    'NewControl': 'platform, perception, control, safety', 
+    'IMOCO4.E': 'machine, layer, control', 
+    'FRACTAL': 'computing, node, cognitive', 
+    'SECREDAS': 'title, security, cross, domain, reliable, dependable, multi, methodology, reference, architecture, component, autonomous, system, high, privacy, protection, functional, safety, operational, performance', 
+    'AutoDrive': 'driving, european, system, autodrive, situation, safe', 
+    'NextPerception': 'smart, system, health, wellbeing, solution, project, automotive, intelligence, monitoring', 
+    'StorAIge': 'technology, high, performance, power, solution, application', 
+    'REACTION': 'sic, line, power, smart', 
+    'AI4DI': 'industry, ai, system', 
+    'Arrowhead Tools': 'digitalisation, automation, tool, engineering', 
+    'WInSiC4AP': 'technology, application, tier1', 
+    'iRel40': 'reliability, system, application', 
+    'R3-PowerUP': 'mm, pilot, line, smart, power', 
+    'Energy ECS': 'energy, technology, new', 
+    'PROGRESSUS': 'smart, grid, infrastructure, power, station, energy', 
+    'BEYOND5': 'radio, technology, soi, pilot', 
+    'YESvGaN': 'yesvgan, low, cost, power, transistor, technology'}
+
+  
+ def get_projects_by_keyword(keyword, projects_dict):
+    projects = []
+    for project, keywords in projects_dict.items():
+        if keyword in keywords:
+            projects.append(project)
+    return projects 
+  
+  
+# Streamlit app code
+def main():
+    st.title("Project Keyword Search")
+
+    keyword = st.text_input("Enter a keyword")
+
+    if st.button("Search"):
+        if keyword:
+            projects = get_projects_by_keyword(keyword, projects_dict)
+            if projects:
+                st.success(f"Projects related to keyword '{keyword}':")
+                for project in projects:
+                    st.write(f"- {project}")
+            else:
+                st.warning("No projects found for the keyword.")
+        else:
+            st.warning("Please enter a keyword.")
+
+if __name__ == "__main__":
+    main()
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 ###### 2.12 CSV Participant & Coordinators Download Button
 df_participants = pd.read_csv("participants.csv")
 
