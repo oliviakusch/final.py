@@ -228,8 +228,24 @@ st.dataframe(df_chart)
 
 
 
-# Dictionary of projects with keywords
-projects_dict = { 
+import sqlite3
+import pandas as pd
+import streamlit as st
+
+# Function to retrieve projects based on a keyword
+def get_projects_by_keyword(keyword, projects_dict):
+    projects = []
+    for project, keywords in projects_dict.items():
+        if keyword in keywords:
+            projects.append(project)
+    return projects
+
+# Main Streamlit app code
+def main():
+    st.title("Project Keyword Search")
+
+    # Dictionary of projects with keywords
+    projects_dict = {
     'MATQu': 'computing, technology, qubit', 
     'HELoS': 'initiative, medical, device, technology', 
     'AFarCloud': 'farming, labour, health, order, project', 
@@ -270,12 +286,6 @@ projects_dict = {
     'BEYOND5': 'radio, technology, soi, pilot', 
     'YESvGaN': 'yesvgan, low, cost, power, transistor, technology'}
 
-
-
-# Streamlit app code
-def main():
-    st.title("Project Keyword Search")
-
     keyword = st.text_input("Enter a keyword")
 
     if st.button("Search"):
@@ -289,18 +299,9 @@ def main():
                 st.warning("No projects found for the keyword.")
         else:
             st.warning("Please enter a keyword.")
-           
-  
+
 if __name__ == "__main__":
     main()
-    
-    
-def get_projects_by_keyword(keyword, projects_dict):
-    projects = []
-    for project, keywords in projects_dict.items():
-        if keyword in keywords:
-            projects.append(project)
-    return projects 
 
 
   
