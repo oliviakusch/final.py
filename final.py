@@ -130,15 +130,6 @@ st.download_button(
 
 
 
-import sqlite3
-import pandas as pd
-import streamlit as st
-
-# create a connection to the database
-import sqlite3
-import pandas as pd
-import streamlit as st
-
 from PIL import Image
 image = Image.open('image2.jpg') # Load the image from disk
 st.image(image) # Display the image
@@ -299,7 +290,8 @@ def main():
         else:
             st.warning("Please enter a keyword.")
             
-  def get_projects_by_keyword(keyword, projects_dict):
+            
+def get_projects_by_keyword(keyword, projects_dict):
     projects = []
     for project, keywords in projects_dict.items():
         if keyword in keywords:
