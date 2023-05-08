@@ -240,20 +240,6 @@ st.dataframe(df_chart)
 
 
 
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Mon May  8 20:18:04 2023
-
-@author: oliviakusch
-"""
-
-def get_projects_by_keyword(keyword, projects_dict):
-    projects = []
-    for project, keywords in projects_dict.items():
-        if keyword in keywords:
-            projects.append(project)
-    return projects 
 
 # Dictionary of projects with keywords
 projects_dict = { 
@@ -296,6 +282,14 @@ projects_dict = {
     'PROGRESSUS': 'smart, grid, infrastructure, power, station, energy', 
     'BEYOND5': 'radio, technology, soi, pilot', 
     'YESvGaN': 'yesvgan, low, cost, power, transistor, technology'}
+
+
+def get_projects_by_keyword(keyword, projects_dict):
+    projects = []
+    for project, keywords in projects_dict.items():
+        if keyword in keywords:
+            projects.append(project)
+    return projects 
 
 
 # Streamlit app code
