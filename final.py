@@ -155,9 +155,8 @@ def get_projects_by_keyword(keyword, projects_dict):
   
 # Streamlit app code
 def main():
-    st.title("Keyword Search")
-    st.text("for all countries")
-
+    st.title("Search Projects By Keyword:")
+    
     keyword = st.text_input("Enter a keyword")
 
     if st.button("Search"):
