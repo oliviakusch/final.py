@@ -84,18 +84,19 @@ st.dataframe(df_coordinators)
 
 
 #Added Functionalities
-# conn = sqlite3.connect('ecsel_database.db')
-# df_chart = pd.read_sql_query("""SELECT activityType, country, SUM(ecContribution) FROM participants WHERE country = '{}' GROUP BY activityType""".format(selectedacronym), conn)
+conn = sqlite3.connect('ecsel_database.db')
+df_chart = pd.read_sql_query("""SELECT activityType, country, SUM(ecContribution) FROM participants WHERE country = '{}' GROUP BY activityType""".format(selectedacronym), conn)
 
-# conn.close()
-# df_chart = df_chart.rename(columns=columnnamechanges)
-# print(df_chart)
+conn.close()
+df_chart = df_chart.rename(columns=columnnamechanges)
+print(df_chart)
 
-# st.dataframe(df_chart) 
+st.dataframe(df_chart) 
 
-# st.bar_chart(data=df_chart, x='Activity Type', y='Contribution Sum')
+st.bar_chart(data=df_chart, x='Activity Type', y='Contribution Sum')
 
-# Added Functionalities
+### CANCELLED 
+""" Added Functionalities
 conn = sqlite3.connect('ecsel_database.db')
 df_chart = pd.read_sql_query(
     """SELECT activityType, country, SUM(ecContribution) 
@@ -104,7 +105,6 @@ df_chart = pd.read_sql_query(
     GROUP BY activityType""".format(selectedacronym), 
     conn
 )
-
 conn.close()
 df_chart = df_chart.rename(columns=columnnamechanges)
 print(df_chart)
@@ -119,7 +119,7 @@ for container in chart.container:
     for bar in container.markers:
         x = bar.x
         y = bar.y
-        st.text((x, y), str(y), ha='center', color='black', fontweight='bold')
+        st.text((x, y), str(y), ha='center', color='black', fontweight='bold')"""
 
 ###### 2.12 CSV Participant & Coordinators Download Button
 df_participants = pd.read_csv("participants.csv")
