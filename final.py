@@ -156,15 +156,24 @@ def main():
             st.warning("Please enter a keyword.")
 
             
-def get_projects_by_keyword(keyword, projects_dict):
+''' def get_projects_by_keyword(keyword, projects_dict):
     projects = []
     for index, row in df_projects.iterrows():
         if keyword in row['keywords']:
             project = row['Project Acronym']
             country = row['Country']
             projects.append((project, country))
-    return projects
+    return projects'''
   
+def get_projects_by_keyword(keyword, projects_dict):
+    projects = []
+    for project, keywords in projects_dict.items():
+        if keyword in keywords:
+            project = ['Project Acronym']
+            country = ['Country']
+            projects.append(project)
+    return projects
+
 
 if __name__ == "__main__":
     main()
