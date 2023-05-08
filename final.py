@@ -93,16 +93,6 @@ print(df_chart)
 st.header('Evolution of Contribution Sum by Activity Type')
 st.bar_chart(data=df_chart, x='Activity Type', y='Contribution Sum')
 st.dataframe(df_chart) 
-
-def get_projects_by_keyword(keyword, df_projects):
-    projects = []
-    for index, row in df_projects.iterrows():
-        if keyword in row['keywords']:
-            project = row['Project Acronym']
-            country = row['Country']
-            projects.append((project, country))
-    return projects
-
   
 # Dictionary of projects with keywords
 projects_dict = { 
@@ -146,8 +136,7 @@ projects_dict = {
     'BEYOND5': 'radio, technology, soi, pilot', 
     'YESvGaN': 'yesvgan, low, cost, power, transistor, technology'}
 
-
-# Streamlit app code
+# streamlit interactive code
 def main():
     st.title("Project Keyword Search")
 
@@ -159,11 +148,23 @@ def main():
             if projects:
                 st.success(f"Projects related to keyword '{keyword}':")
                 for project in projects:
-                    st.write(f"- {project}")
+                    country = df_countries[df_countries['Acronym'] == project]['Country'].iloc[0]
+                    st.write(f"- {project} ({country})")
             else:
                 st.warning("No projects found for the keyword.")
         else:
             st.warning("Please enter a keyword.")
+
+            
+def get_projects_by_keyword(keyword, projects_dict):
+    projects = []
+    for index, row in df_projects.iterrows():
+        if keyword in row['keywords']:
+            project = row['Project Acronym']
+            country = row['Country']
+            projects.append((project, country))
+    return projects
+  
 
 if __name__ == "__main__":
     main()
