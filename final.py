@@ -135,7 +135,7 @@ projects_dict = {
     'Energy ECS': 'energy, technology, new', 
     'PROGRESSUS': 'smart, grid, infrastructure, power, station, energy', 
     'BEYOND5': 'radio, technology, soi, pilot', 
-    'YESvGaN': 'yesvgan, low, cost, power, transistor, technology,
+    'YESvGaN': 'yesvgan, low, cost, power, transistor, technology}
 
 
 # Streamlit app code
