@@ -90,7 +90,7 @@ conn.close()
 df_chart = df_chart.rename(columns=columnnamechanges)
 print(df_chart)
 
-st.bar_chart(data=df_chart, title = 'Evolution of Contribution Sum: Activity Types", x='Activity Type', y='Contribution Sum')
+st.bar_chart(data=df_chart, x='Activity Type', y='Contribution Sum')
 st.dataframe(df_chart) 
              
 ###### 2.12 CSV Participant & Coordinators Download Button
