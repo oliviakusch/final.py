@@ -81,7 +81,21 @@ df_coordinators.to_csv('project coordinators.csv')
 st.header('Coordinators in ' + selectedcountry)
 st.dataframe(df_coordinators) 
 
-#2.12 CSV Participant & Coordinators Download Button
+
+
+#Added Functionalities
+conn = sqlite3.connect('ecsel_database.db')
+df_chart = pd.read_sql_query("""SELECT activityType, country, SUM(ecContribution) FROM participants WHERE country = '{}' GROUP BY activityType""".format(selectedacronym), conn)
+
+conn.close()
+df_chart = df_chart.rename(columns=columnnamechanges)
+print(df_chart)
+
+st.dataframe(df_chart) 
+
+st.bar_chart(data=df_chart, x='Activity Type', y='Contribution Sum')
+
+###### 2.12 CSV Participant & Coordinators Download Button
 df_participants = pd.read_csv("participants.csv")
 
 def convert_df_participants(df):
@@ -111,16 +125,3 @@ st.download_button(
    mime="text/csv;charset=utf-8",
    key='download1-csv'
 )
-
-#Added Functionalities
-conn = sqlite3.connect('ecsel_database.db')
-df_chart = pd.read_sql_query("""SELECT activityType, country, SUM(ecContribution) FROM participants WHERE country = '{}' GROUP BY activityType""".format(selectedacronym), conn)
-
-conn.close()
-df_chart = df_chart.rename(columns=columnnamechanges)
-print(df_chart)
-
-st.dataframe(df_chart) 
-
-st.bar_chart(data=df_chart, x='Activity Type', y='Contribution Sum')
-
