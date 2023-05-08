@@ -240,6 +240,14 @@ st.dataframe(df_chart)
 
 
 
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon May  8 20:18:04 2023
+
+@author: oliviakusch
+"""
+
 def get_projects_by_keyword(keyword, projects_dict):
     projects = []
     for project, keywords in projects_dict.items():
@@ -310,6 +318,10 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+  
+  
+  
 
 
   
