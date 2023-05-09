@@ -145,13 +145,19 @@ projects_dict = {
     'YESvGaN': 'yesvgan, low, cost, power, transistor, technology'}
 
  
-def get_projects_by_keyword(keyword, projects_dict):
+'''def get_projects_by_keyword(keyword, projects_dict):
     projects = []
     for project, keywords in projects_dict.items():
         if keyword in keywords:
             projects.append(project)
-    return projects 
+    return projects '''
   
+def get_projects_by_keywords(keywords, projects_dict):
+    projects = []
+    for project, project_keywords in projects_dict.items():
+        if all(keyword in project_keywords for keyword in keywords):
+            projects.append(project)
+    return projects
   
 # Streamlit app code
 def main():
@@ -163,7 +169,7 @@ def main():
     all_keywords = [keyword for keywords in projects_dict.values() for keyword in keywords.split(", ")]
     unique_keywords = list(set(all_keywords))
 
-    keyword = st.selectbox("Select a keyword", unique_keywords)
+    keyword = st.multiselect("Select at least one keyword", unique_keywords)
 
     if st.button("Search"):
         if keyword:
@@ -175,7 +181,7 @@ def main():
             else:
                 st.warning("No projects found for the keyword.")
         else:
-            st.warning("Please enter a keyword.")
+            st.warning("Please enter at least one keyword.")
 
 if __name__ == "__main__":
     main()
