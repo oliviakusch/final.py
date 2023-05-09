@@ -157,7 +157,7 @@ def get_projects_by_keyword(keyword, projects_dict):
 def main():
     st.title("Search Projects By Keyword:")
     
-    keyword = st.text_input("Enter a keyword")
+    keyword = st.selectbox("Select a keyword", list(projects_dict.keys()))
 
     if st.button("Search"):
         if keyword:
