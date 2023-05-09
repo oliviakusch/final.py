@@ -175,7 +175,7 @@ def main():
         if keyword:
             projects = get_projects_by_keyword(keyword, projects_dict)
             if projects:
-                st.success(f"Projects related to keyword '{keyword}':")
+                st.success(f"Projects related to at least one of the keywords: '{keyword}':")
                 for project in projects:
                     st.write(f"- {project}")
             else:
