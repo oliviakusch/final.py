@@ -144,7 +144,8 @@ projects_dict = {
     'BEYOND5': 'radio, technology, soi, pilot', 
     'YESvGaN': 'yesvgan, low, cost, power, transistor, technology'}
 
- 
+ # code for selecting just one keyword
+  
 # def get_projects_by_keyword(keyword, projects_dict):
   #  projects = []
    # for project, keywords in projects_dict.items():
@@ -166,6 +167,7 @@ def main():
     # keyword = st.text_input("Enter a keyword")
     # keyword = st.selectbox("Select a keyword", list(projects_dict.values()))
 
+    # code for splitting the list of values in the key value pairs
     all_keywords = [keyword for keywords in projects_dict.values() for keyword in keywords.split(", ")]
     unique_keywords = list(set(all_keywords))
 
