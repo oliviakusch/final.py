@@ -156,8 +156,14 @@ def get_projects_by_keyword(keyword, projects_dict):
 # Streamlit app code
 def main():
     st.title("Search Projects By Keyword:")
+    
     # keyword = st.text_input("Enter a keyword")
-    keyword = st.selectbox("Select a keyword", list(projects_dict.values()))
+    # keyword = st.selectbox("Select a keyword", list(projects_dict.values()))
+
+    all_keywords = [keyword for keywords in projects_dict.values() for keyword in keywords.split(", ")]
+    unique_keywords = list(set(all_keywords))
+
+    keyword = st.selectbox("Select a keyword", unique_keywords)
 
     if st.button("Search"):
         if keyword:
