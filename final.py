@@ -177,11 +177,11 @@ def main():
         if keyword:
             projects = get_projects_by_keyword(keyword, projects_dict)
             if projects:
-                st.success(f"Projects related to at least one of the keywords: '{keyword}':")
+                st.success(f"Projects related to these keywords: '{keyword}':")
                 for project in projects:
                     st.write(f"- {project}")
             else:
-                st.warning("No projects found for the keyword.")
+                st.warning("No projects found for this keyword or combination of keywords.")
         else:
             st.warning("Please enter at least one keyword.")
 
