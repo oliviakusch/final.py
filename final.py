@@ -152,7 +152,7 @@ projects_dict = {
             projects.append(project)
     return projects '''
   
-def get_projects_by_keywords(keywords, projects_dict):
+def get_projects_by_keyword(keywords, projects_dict):
     projects = []
     for project, project_keywords in projects_dict.items():
         if all(keyword in project_keywords for keyword in keywords):
