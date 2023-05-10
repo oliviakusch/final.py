@@ -35,17 +35,15 @@ st.caption(f"You have selected: **{selectedcountry}**")
 
 # 2.8 create a new dataframe of participants
 conn = sqlite3.connect('ecsel_database.db')
-new_participants = '''SELECT shortName, name, activityType, organizationURL, SUM(ecContribution) 
-           FROM participants
-           WHERE role = 'participant'AND 'country'='{}' 
-           ORDER BY SUM(ecContribution) DESC'''
-
-# df_participants = pd.read_sql_query(new_participants, conn)
-df_participants = pd.read_sql_query("""SELECT shortName, name, activityType, organizationURL, SUM(ecContribution)  FROM participants WHERE country = '{}' AND role = 'participant' GROUP BY ecContribution ORDER BY SUM(ecContribution)""".format(selectedacronym), conn)
+df_participants = pd.read_sql_query("""SELECT shortName, name, activityType, organizationURL, SUM(ecContribution)  
+FROM participants WHERE country = '{}' AND role = 'participant' 
+GROUP BY ecContribution ORDER BY SUM(ecContribution)""".format(selectedacronym), conn)
 
 conn.close()
-print(df_participants)
+
 df_participants = df_participants.rename(columns=columnnamechanges)
+print(df_participants)
+
 df_participants.to_csv('participants.csv')
 
 #2.9 Visualization of the new dataframe
@@ -60,6 +58,7 @@ ORDER BY shortName ASC""".format(selectedacronym), conn)
 
 conn.close()
 
+# creating name changes for columns in the data frame 
 df_coordinators = df_coordinators.rename(columns=columnnamechanges)
 
 print(df_coordinators)
