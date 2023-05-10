@@ -2,11 +2,8 @@ import sqlite3
 import pandas as pd
 import streamlit as st
 
-# create a connection to the database
-import sqlite3
-import pandas as pd
-import streamlit as st
 
+# import image to streamlit
 from PIL import Image
 image = Image.open('image2.jpg') # Load the image from disk
 st.image(image) # Display the image
@@ -21,18 +18,16 @@ columnnamechanges = {"index" : "Index", "projectID" : "Project ID", "projectAcro
                      "SUM(ecContribution)" : "Contribution Sum", "country" : "Country", "role" : "Role", "ecContribution" : "Contribution" }
 
 query = "SELECT Country, Acronym FROM countries"
+
 df_countries = pd.read_sql(query, conn) 
-
 conn.close()
-
-
 print(df_countries)
 
+# create country dictionary for use of the dropdown box
 country_names = dict(zip(df_countries["Country"], df_countries["Acronym"]))
-
 print(country_names)
 
-
+# creating country drop box
 selectedcountry = st.selectbox('Select a Country :earth_africa: :',list(country_names.keys())) 
 selectedacronym = country_names[selectedcountry]
 
@@ -58,17 +53,10 @@ st.header('Participants in ' + selectedcountry)
 st.dataframe(df_participants) 
 
 #2.10  Generating a project coordinators dataframe
-
 conn = sqlite3.connect('ecsel_database.db')
-new_coordinators = '''SELECT shortName, name, projectAcronym, activityType 
-           FROM participants
-           WHERE role = 'coordinator' AND 'country'='{}' 
-           GROUP BY country
-           ORDER BY shortName ASC'''
-
-# df_coordinators = pd.read_sql_query(new_coordinators, conn)
-
-df_coordinators = pd.read_sql_query("""SELECT * FROM participants WHERE country = '{}'AND role = 'coordinator' ORDER BY shortName ASC""".format(selectedacronym), conn)
+df_coordinators = pd.read_sql_query("""SELECT * FROM participants 
+WHERE country = '{}'AND role = 'coordinator' 
+ORDER BY shortName ASC""".format(selectedacronym), conn)
 
 conn.close()
 
