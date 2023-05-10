@@ -37,7 +37,7 @@ st.caption(f"You have selected: **{selectedcountry}**")
 conn = sqlite3.connect('ecsel_database.db')
 df_participants = pd.read_sql_query("""SELECT shortName, name, activityType, organizationURL, SUM(ecContribution)  
 FROM participants WHERE country = '{}' AND role = 'participant' 
-GROUP BY ecContribution ORDER BY SUM(ecContribution)""".format(selectedacronym), conn)
+GROUP BY ecContribution ORDER BY SUM(ecContribution) DESC""".format(selectedacronym), conn)
 
 conn.close()
 
