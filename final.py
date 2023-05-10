@@ -69,7 +69,7 @@ st.header('Coordinators in ' + selectedcountry)
 st.dataframe(df_coordinators) 
 
 
-#Added Functionalities
+# Bar chart additional functionality
 conn = sqlite3.connect('ecsel_database.db')
 df_chart = pd.read_sql_query("""SELECT activityType, country, SUM(ecContribution) FROM participants WHERE country = '{}' GROUP BY activityType""".format(selectedacronym), conn)
 
@@ -79,17 +79,12 @@ print(df_chart)
 
 st.header('Evolution of Contribution Sum by Activity Type')
 st.bar_chart(data=df_chart, x='Activity Type', y='Contribution Sum')
-st.dataframe(df_chart) 
-            
+st.dataframe(df_chart)
   
   
   
-  
-  
-  
- 
+# Keyword search additional functionality 
 
-# Dictionary of projects with keywords
 projects_dict = { 
     'MATQu': 'computing, technology, qubit', 
     'HELoS': 'initiative, medical, device, technology', 
@@ -130,15 +125,6 @@ projects_dict = {
     'PROGRESSUS': 'smart, grid, infrastructure, power, station, energy', 
     'BEYOND5': 'radio, technology, soi, pilot', 
     'YESvGaN': 'yesvgan, low, cost, power, transistor, technology'}
-
- # code for selecting just one keyword
-  
-# def get_projects_by_keyword(keyword, projects_dict):
-  #  projects = []
-   # for project, keywords in projects_dict.items():
-    #    if keyword in keywords:
-     #       projects.append(project)
-    # return projects '''
   
 def get_projects_by_keyword(keywords, projects_dict):
     projects = []
@@ -147,14 +133,11 @@ def get_projects_by_keyword(keywords, projects_dict):
             projects.append(project)
     return projects
   
-# Streamlit app code
+# enter in streamlit
 def main():
     st.title("Search Projects By Keyword:")
     
-    # keyword = st.text_input("Enter a keyword")
-    # keyword = st.selectbox("Select a keyword", list(projects_dict.values()))
-
-    # code for splitting the list of values in the key value pairs
+# code for splitting the list of values in the key value pairs
     all_keywords = [keyword for keywords in projects_dict.values() for keyword in keywords.split(", ")]
     unique_keywords = list(set(all_keywords))
 
@@ -174,22 +157,9 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-  
-
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-###### 2.12 CSV Participant & Coordinators Download Button
+# 2.12 CSV Participant & Coordinators Download Button
 df_participants = pd.read_csv("participants.csv")
 
 def convert_df_participants(df):
